@@ -1,36 +1,166 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="style.css">
+    <title>Edwin Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f7f7fb;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        nav button {
+            background: #e0e7ff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            color: #4f46e5;
+        }
+
+        p.subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 140px;
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+
+        section {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #4f46e5;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #c7d2fe;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background: #a5b4fc;
+        }
+    </style>
 </head>
 <body>
+
 <div class="container">
-    <div style="margin-bottom:20px;">
+
+    <nav>
         <a href="#about"><button>About</button></a>
         <a href="#projects"><button>Projects</button></a>
         <a href="#contact"><button>Contact</button></a>
-    </div>
-    <h1 class="animate__animated animate__fadeInDown">Edwin P Johnson</h1>
-    <p>Creative Editor • Learning Developer</p>
+    </nav>
+
+    <h1>Edwin P Johnson</h1>
+    <p class="subtitle">Creative Editor • Aspiring Developer</p>
+
     <img src="me.jpg" alt="My Photo">
-    <h2 id="about">About Me</h2>
-    <p>I’m currently a BCA student with a strong interest in building my skills in technology and creative work. I enjoy editing and continuously improving my abilities by learning new tools and concepts. My goal is to pursue an MCA and gain deeper knowledge in the field. In the future, I aim to work professionally and take on better opportunities that help me grow.</p>
-    <h2 id="projects">Projects</h2>
-    <p>Web Development Portfolio</p>
-    <h2 id="contact">Feedback / Contact Me</h2>
-    <form id="contactForm">
-        <input type="text" placeholder="Name" id="name" required><br>
-        <input type="email" placeholder="Email" id="email" required><br>
-        <button type="submit">Submit</button>
-    </form>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>
+                I am a BCA student passionate about technology and creativity. I enjoy building projects, learning new tools, and improving my skills step by step. My goal is to pursue MCA and grow into a skilled developer while exploring creative work alongside it.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="card">
+            <p>Portfolio Website with Full Stack Integration (MongoDB + Express + Render Deployment)</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="card">
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" id="name" required>
+                <input type="email" placeholder="Your Email" id="email" required>
+                <button type="submit" class="submit-btn">Send</button>
+            </form>
+        </div>
+    </section>
+
 </div>
+
 <script>
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
     e.preventDefault();
+
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
+
     try {
         const res = await fetch("/save", {
             method: "POST",
@@ -39,6 +169,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
             },
             body: JSON.stringify({ name, email })
         });
+
         const data = await res.json();
         alert(data.message);
     } catch (err) {
@@ -46,5 +177,6 @@ document.getElementById("contactForm").addEventListener("submit", async function
     }
 });
 </script>
+
 </body>
 </html>
