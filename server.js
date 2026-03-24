@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
-mongoose.connect("mongodb+srv://edwin:061077@kju.ndce6vu.mongodb.net/portfolio")
+mongoose.connect("mongodb+srv://edwin:061077@kju.ndce6vu.mongodb.net/portfolio?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.log(err));
 
@@ -30,6 +30,7 @@ app.post("/save", async (req, res) => {
         await newData.save();
         res.json({ message: "Saved successfully" });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Error saving data" });
     }
 });
