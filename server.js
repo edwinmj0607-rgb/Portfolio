@@ -20,10 +20,18 @@ const DataSchema = new mongoose.Schema({
 
 const Data = mongoose.model("Data", DataSchema);
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
 app.post("/save", async (req, res) => {
-    const newData = new Data(req.body);
-    await newData.save();
-    res.send("Saved");
+    try {
+        const newData = new Data(req.body);
+        await newData.save();
+        res.json({ message: "Saved successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Error saving data" });
+    }
 });
 
 const PORT = process.env.PORT || 5000;
