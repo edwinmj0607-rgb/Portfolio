@@ -1,0 +1,98 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+
+    min-height: 100vh;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+
+    width: 90%;
+    max-width: 700px;
+}
+
+/* TEXT */
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #ffccd5;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* IMAGE */
+img {
+    width: 100px;
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+}
+
+/* BUTTONS */
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff1e4d;
+}
+
+/* 📱 MOBILE FIX */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
