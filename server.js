@@ -15,7 +15,8 @@ mongoose.connect("mongodb+srv://edwin:061077@kju.ndce6vu.mongodb.net/portfolio?r
 
 const DataSchema = new mongoose.Schema({
     name: String,
-    email: String
+    email: String,
+    message: String
 });
 
 const Data = mongoose.model("Data", DataSchema);
@@ -30,7 +31,6 @@ app.post("/save", async (req, res) => {
         await newData.save();
         res.json({ message: "Saved successfully" });
     } catch (error) {
-        console.log(error);
         res.status(500).json({ message: "Error saving data" });
     }
 });
